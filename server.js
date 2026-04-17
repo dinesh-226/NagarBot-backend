@@ -16,7 +16,7 @@ const io = new Server(server, {
 
 setIO(io);
 
-app.use(cors({ origin: process.env.CLIENT_URL || '*' }));
+app.use(cors({ origin:"https://nagar-bot-frontend-7z1q.vercel.app/"}));
 app.use(express.json());
 
 app.use('/api/auth', require('./routes/auth'));
