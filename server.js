@@ -10,13 +10,19 @@ require('./services/cronService');
 
 const app = express();
 const server = http.createServer(app);
+const allowedOrigins = [
+  "https://nagar-bot-frontend-7z1q.vercel.app",
+  "http://localhost:3000",
+  "http://localhost:5000",
+];
+
 const io = new Server(server, {
-  cors: { origin: "https://nagar-bot-frontend-7z1q.vercel.app", methods: ['GET', 'POST'] },
+  cors: { origin: allowedOrigins, methods: ['GET', 'POST'] },
 });
 
 setIO(io);
 
-app.use(cors({ origin: "https://nagar-bot-frontend-7z1q.vercel.app", credentials: true }));
+app.use(cors({ origin: allowedOrigins, credentials: true }));
 app.use(express.json());
 
 app.use('/api/auth', require('./routes/auth'));
