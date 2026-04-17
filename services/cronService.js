@@ -36,7 +36,6 @@ cron.schedule('0 8 * * 1', async () => {
     const stats = { thisWeek: summarize(thisWeek), lastWeek: summarize(lastWeek) };
     const digest = await generateWeeklyDigest(stats);
 
-    // Send to all approved officers + admin
     const officers = await User.find({ role: 'officer', approved: true }).select('email');
     const allEmails = [...new Set([...officers.map((o) => o.email), process.env.EMAIL_USER])];
 

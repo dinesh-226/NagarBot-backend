@@ -20,7 +20,6 @@ Complaint: "${description}"`;
 
   const result = await model.generateContent(prompt);
   let text = result.response.text().trim();
-  // strip markdown code fences if present
   text = text.replace(/```json|```/g, '').trim();
   return JSON.parse(text);
 };

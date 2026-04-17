@@ -7,7 +7,7 @@ const chat = async (req, res) => {
   if (!message) return res.status(400).json({ message: 'Message required' });
 
   try {
-    const model = genAI.getGenerativeModel({ model: 'gemini-2.3-flash' });
+    const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
     const systemPrompt = `You are NagarBot Assistant, a helpful civic AI for Indian citizens. You help users:
 - Understand how to report civic issues (potholes, garbage, streetlights, water leaks, illegal construction)
 - Know which government department handles which issue

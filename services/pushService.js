@@ -17,7 +17,7 @@ const sendPush = async (subscription, payload) => {
   try {
     await webpush.sendNotification(subscription, JSON.stringify(payload));
   } catch (e) {
-    if (e.statusCode === 410) return 'expired'; // subscription gone
+    if (e.statusCode === 410) return 'expired';
     console.error('Push failed:', e.message);
   }
 };

@@ -99,21 +99,7 @@ const createIssue = async (req, res) => {
       await sendEmail({
         to,
         subject: `🚨 HIGH URGENCY Alert — ${refNumber} | Urgency ${aiData.urgency}/10`,
-        text: `A high-urgency civic issue has been reported and requires IMMEDIATE attention.
-
-Ref: ${refNumber}
-Title: ${title}
-Category: ${aiData.category}
-Department: ${aiData.department}
-Urgency: ${aiData.urgency}/10
-Location: ${address || `${lat}, ${lng}`}
-SLA Deadline: ${slaDeadline.toDateString()}
-Reported By: ${req.user.name}
-
-Action Required: ${aiData.action_required || 'Immediate inspection and repair'}
-Summary: ${aiData.summary || 'High urgency civic issue'}
-
-Login to Officer Portal: ${process.env.CLIENT_URL}/officer`,
+        text: `A high-urgency civic issue has been reported and requires IMMEDIATE attention.\n\nRef: ${refNumber}\nTitle: ${title}\nCategory: ${aiData.category}\nDepartment: ${aiData.department}\nUrgency: ${aiData.urgency}/10\nLocation: ${address || `${lat}, ${lng}`}\nSLA Deadline: ${slaDeadline.toDateString()}\nReported By: ${req.user.name}\n\nAction Required: ${aiData.action_required || 'Immediate inspection and repair'}\nSummary: ${aiData.summary || 'High urgency civic issue'}\n\nLogin to Officer Portal: ${process.env.CLIENT_URL}/officer`,
       });
       console.log(`High urgency alert sent for ${refNumber} to: ${to}`);
     } catch (e) {
