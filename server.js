@@ -17,7 +17,7 @@ const allowedOrigins = [
 ];
 
 const io = new Server(server, {
-  cors: { origin: allowedOrigins, methods: ['GET', 'POST'] },
+  cors: { origin:"https://nagar-bot-frontend-7z1q.vercel.app", methods: ['GET', 'POST'] },
 });
 
 setIO(io);
